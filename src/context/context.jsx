@@ -55,6 +55,11 @@ const ContextProvider = (props) => {
         }, 75 * index)
     }
 
+    const handleNewChat = () => {
+        setLoading(false)
+        setShowResult(false)
+    }
+
     const [input, setInput] = useState('');
     const [recentPrompt, setRecentPrompt] = useState('');
     const [previousPrompt, setPreviousPrompt] = useState([])
@@ -74,6 +79,7 @@ const ContextProvider = (props) => {
         resultData,
         input,
         setInput,
+        handleNewChat,
     }
 
     return (

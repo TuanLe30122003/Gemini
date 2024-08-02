@@ -6,7 +6,7 @@ import { Context } from '../context/context'
 const Sidebar = () => {
 
     const [extended, setExtended] = useState(false)
-    const { onSent, previousPrompt, setRecentPrompt } = useContext(Context)
+    const { onSent, previousPrompt, setRecentPrompt, handleNewChat } = useContext(Context)
 
     const loadPrompt = async (prompt) => {
         setRecentPrompt(prompt)
@@ -22,7 +22,7 @@ const Sidebar = () => {
             <div className='sidebar'>
                 <div className='top'>
                     <img className='menu' src={assets.menu_icon} alt='' onClick={handleExtend} />
-                    <div className='new-chat'>
+                    <div className='new-chat' onClick={() => handleNewChat()}>
                         <img src={assets.plus_icon} alt='' />
                         {extended ? <p>New Chat</p> : null}
                     </div>
@@ -106,6 +106,7 @@ const SidebarStyled = styled.div`
     .sidebar .recent {
         display: flex;
         flex-direction: column;
+        animation: fadein 1.5s;
     }
 
     .sidebar .recent-title {
@@ -136,6 +137,12 @@ const SidebarStyled = styled.div`
     .bottom-item {
         padding-right: 10px;
         cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+        .sidebar {
+            display: none;
+        }
     }
 `;
 

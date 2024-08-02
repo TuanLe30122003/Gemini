@@ -19,7 +19,6 @@ const Main = () => {
             </div>
 
             <div className='main-container'>
-
                 {
                     !showResult
                         ?
@@ -77,7 +76,7 @@ const Main = () => {
                         <div>
                             <img src={assets.gallery_icon} alt='' />
                             <img src={assets.mic_icon} alt='' />
-                            <img src={assets.send_icon} onClick={() => onSent()} alt='' />
+                            {input ? <img src={assets.send_icon} onClick={() => onSent()} alt='' /> : null}
                         </div>
                     </div>
                     <p className='bottom-info'>
@@ -269,6 +268,25 @@ const MainStyled = styled.div`
 
         100% {
             background-position: 800px 0px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        input {
+            flex: none;
+            width: 150px;
+        }
+
+        .main-bottom img {
+            width: 20px;
+        }
+
+        .search-box {
+            padding: 5px 10px;
+        }
+
+        .search-box div {
+            gap: 5px;
         }
     }
 }
